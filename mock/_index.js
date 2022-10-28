@@ -4,8 +4,9 @@ const files = import.meta.glob('./**/*.js', {
   eager: true,
 });
 
-const modules = Object.keys(files).forEach((key) => {
-  return { ...files[key].default };
+const modules = [];
+Object.keys(files).forEach((key) => {
+  modules.push(...files[key].default);
 });
 
 /**

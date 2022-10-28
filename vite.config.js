@@ -6,7 +6,7 @@ import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
 import { viteMockServe } from 'vite-plugin-mock';
 
-export default (command, mode) => {
+export default ({ command, mode }) => {
   const isBuild = command === 'build';
   const { VITE_PORT, VITE_BASE_URL } = loadEnv(mode, process.cwd());
   return defineConfig({
