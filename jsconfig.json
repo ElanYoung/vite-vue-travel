@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "noLib": false,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom"],
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
+  "exclude": ["node_modules", "dist"]
+}
