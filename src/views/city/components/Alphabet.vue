@@ -3,11 +3,11 @@
     <ul class="alpha-list">
       <li
         v-for="letter in letters"
-        :ref="letter"
+        :ref="(letterRef) => (letterRefs[letter] = letterRef)"
         :key="letter"
         class="alpha-list__item"
         @click="onAlphaClick"
-        @touchstart.prevent="onTouchStart"
+        @touchstart="onTouchStart"
         @touchmove="onTouchMove"
         @touchend="onTouchEnd"
       >
@@ -17,57 +17,58 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CityAlphabet',
-  props: {
-    cities: {
-      type: Object,
-      default: () => {},
-    },
+<script setup>
+import { ref, onUpdated, computed } from 'vue';
+
+const props = defineProps({
+  cities: {
+    type: Object,
+    default: () => {},
   },
-  data() {
-    return {
-      touchStatus: false,
-      startY: 0,
-      timer: null,
-    };
-  },
-  computed: {
-    letters() {
-      return Object.keys(this.cities);
-    },
-  },
-  updated() {
-    // 提示性能
-    this.startY = this.$refs.A[0].offsetTop;
-  },
-  methods: {
-    onAlphaClick(event) {
-      this.$emit('change', event.target.innerText);
-    },
-    onTouchStart() {
-      this.touchStatus = true;
-    },
-    onTouchMove(event) {
-      if (this.touchStatus) {
-        // TODO 使用 lodash 进行优化
-        if (this.timer) {
-          clearTimeout(this.timer);
-        }
-        this.timer = setTimeout(() => {
-          const touchY = event.touches[0].clientY - 82;
-          const index = Math.floor((touchY - this.startY) / 20);
-          if (index >= 0 && index < this.letters.length) {
-            this.$emit('change', this.letters[index]);
-          }
-        }, 8);
+});
+
+const emit = defineEmits(['change']);
+
+const letters = computed(() => {
+  return Object.keys(props.cities);
+});
+const touchStatus = ref(false);
+const startY = ref(0);
+const letterRefs = ref([]);
+let timer = null;
+
+onUpdated(() => {
+  // 提示性能
+  startY.value = letterRefs.value.A.offsetTop;
+});
+
+const onAlphaClick = (event) => {
+  emit('change', event.target.innerText);
+};
+
+const onTouchStart = () => {
+  touchStatus.value = true;
+};
+
+const onTouchMove = (event) => {
+  if (touchStatus.value) {
+    // TODO 使用 lodash 进行优化
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(() => {
+      const touchY = event.touches[0].clientY - 82;
+      const index = Math.floor((touchY - startY.value) / 20);
+      if (index >= 0 && index < letters.value.length) {
+        emit('change', letters.value[index]);
       }
-    },
-    onTouchEnd() {
-      this.touchStatus = false;
-    },
-  },
+    }, 8);
+  }
+};
+
+const onTouchEnd = () => {
+  touchStatus.value = false;
 };
 </script>
 

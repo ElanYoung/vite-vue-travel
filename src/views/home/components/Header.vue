@@ -16,28 +16,23 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex';
+<script setup>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
 import { getCityName } from '@/utils/map';
 
-export default {
-  name: 'HomeHeader',
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapState(['city']),
-  },
-  mounted() {
-    this.initCurrentCity();
-  },
-  methods: {
-    initCurrentCity() {
-      getCityName().then((city) => {
-        this.$store.commit('city/change', { city });
-      });
-    },
-  },
+const store = useStore();
+const { city } = store.state;
+
+onMounted(() => {
+  if (!city.currentCity) {
+    initCurrentCity();
+  }
+});
+
+const initCurrentCity = async () => {
+  const city = await getCityName();
+  store.commit('city/change', { city });
 };
 </script>
 

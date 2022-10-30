@@ -9,14 +9,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CityHeader',
-  data() {
-    return {};
-  },
-};
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
 .header {

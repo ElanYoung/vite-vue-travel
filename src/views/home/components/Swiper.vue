@@ -1,58 +1,33 @@
 <template>
   <div class="container">
-    <div v-if="showSwiper" class="swiper-container">
-      <div class="swiper-wrapper">
-        <div v-for="banner in banners" :key="banner.id" class="swiper-slide">
-          <img class="swiper-image" :src="banner.url" />
-        </div>
-      </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination"></div>
-    </div>
+    <swiper
+      :modules="modules"
+      :loop="true"
+      :autoplay="{ delay: 3000, disableOnInteraction: false }"
+      :pagination="{ clickable: true }"
+    >
+      <swiper-slide v-for="banner in banners" :key="banner.id">
+        <img class="swiper-image" :src="banner.url" />
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
-<script>
-import Swiper, { Pagination, Autoplay } from 'swiper';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.less';
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, Pagination } from 'swiper';
 
-Swiper.use([Pagination, Autoplay]);
+import 'swiper/less';
+import 'swiper/less/pagination';
 
-export default {
-  name: 'HomeSwiper',
-  components: {},
-  props: {
-    banners: {
-      type: Array,
-      default: () => [],
-    },
+defineProps({
+  banners: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return {};
-  },
-  computed: {
-    showSwiper() {
-      return this.banners && this.banners.length > 0;
-    },
-  },
-  mounted() {},
-  methods: {
-    initSwiper() {
-      this.swiper = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        loop: true,
-      });
-    },
-  },
-};
+});
+
+const modules = [Autoplay, Pagination];
 </script>
 
 <style lang="less" scoped>
@@ -63,14 +38,14 @@ export default {
   height: 0;
   background-color: #eeeeee;
 
-  .swiper-container {
+  .swiper-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper {
     /* 设置分页 */
     --swiper-pagination-color: #fff;
-
-    .swiper-image {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 </style>

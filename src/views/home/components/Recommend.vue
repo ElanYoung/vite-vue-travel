@@ -5,34 +5,30 @@
       <router-link
         v-for="recommend of recommends"
         :key="recommend.id"
-        tag="li"
+        v-slot="{ navigate }"
+        custom
         :to="`/detail/${recommend.id}`"
-        class="recommend-item border-bottom"
       >
-        <img class="recommend-item__image" :src="recommend.url" />
-        <div class="recommend-item__info">
-          <p class="recommend-item__info__title">{{ recommend.title }}</p>
-          <p class="recommend-item__info__description">{{ recommend.description }}</p>
-          <van-button class="recommend-item__info__button" color="#ff9300" size="mini">查看详情</van-button>
-        </div>
+        <li class="recommend-item border-bottom" role="link" @click="navigate" @keypress.enter="navigate">
+          <img class="recommend-item__image" :src="recommend.url" />
+          <div class="recommend-item__info">
+            <p class="recommend-item__info__title">{{ recommend.title }}</p>
+            <p class="recommend-item__info__description">{{ recommend.description }}</p>
+            <van-button class="recommend-item__info__button" color="#ff9300" size="mini">查看详情</van-button>
+          </div>
+        </li>
       </router-link>
     </ul>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeRecommend',
-  props: {
-    recommends: {
-      type: Array,
-      default: () => [],
-    },
+<script setup>
+defineProps({
+  recommends: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return {};
-  },
-};
+});
 </script>
 
 <style lang="less" scoped>

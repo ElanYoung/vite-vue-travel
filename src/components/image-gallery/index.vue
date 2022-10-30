@@ -1,68 +1,46 @@
 <template>
   <div class="container" @click="onClickGallery">
     <div class="image-gallery-wrapper">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div v-for="image in images" :key="image" class="swiper-slide">
-            <img class="swiper-image" :src="image" />
-          </div>
-        </div>
-        <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
-      </div>
+      <swiper
+        :modules="modules"
+        :loop="false"
+        :autoplay="false"
+        :observer="true"
+        :observe-parents="true"
+        :pagination="{ clickable: true, type: 'fraction' }"
+      >
+        <swiper-slide v-for="image in images" :key="image">
+          <img class="swiper-image" :src="image" />
+        </swiper-slide>
+      </swiper>
     </div>
   </div>
 </template>
 
-<script>
-import Swiper, { Pagination } from 'swiper';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.less';
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination } from 'swiper';
 
-Swiper.use([Pagination]);
+import 'swiper/less';
+import 'swiper/less/pagination';
 
-export default {
-  name: 'ImageGallery',
-  props: {
-    images: {
-      type: Array,
-      default: () => [],
-    },
+const modules = [Pagination];
+
+defineProps({
+  images: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return {};
-  },
-  mounted() {
-    this.initSwiper();
-  },
-  methods: {
-    initSwiper() {
-      this.swiper = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          type: 'fraction',
-        },
-        autoplay: false,
-        loop: false,
-        // 开启动态检查器
-        observer: true,
-        // 监测Swiper祖/父元素
-        observeParents: true,
-      });
-    },
-    onClickGallery() {
-      this.$emit('close');
-    },
-  },
+});
+
+const emit = defineEmits(['close']);
+
+const onClickGallery = () => {
+  emit('close');
 };
 </script>
 
 <style lang="less" scoped>
-::v-deep .swiper-container {
-  overflow: inherit;
-}
-
 .container {
   position: fixed;
   top: 0;
@@ -80,15 +58,17 @@ export default {
     width: 100%;
     height: 0;
 
-    .swiper-container {
+    :deep(.swiper) {
+      overflow: inherit;
+
       .swiper-image {
         width: 100%;
         height: 100%;
       }
 
-      .swiper-pagination {
+      .swiper-pagination-fraction {
         bottom: -40px !important;
-        color: #fff !important;
+        color: #fff;
       }
     }
   }

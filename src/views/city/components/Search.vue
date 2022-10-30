@@ -12,7 +12,7 @@
       left-icon=""
       placeholder="输入城市名或拼音"
     />
-    <div v-show="keyword" ref="search-content" class="search-content">
+    <div v-show="keyword" ref="searchContent" class="search-content">
       <ul>
         <li
           v-for="result in results"
@@ -31,94 +31,91 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BetterScroll from 'better-scroll';
-import { mapMutations } from 'vuex';
+import { ref, onMounted, onUpdated, watch, nextTick } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-export default {
-  name: 'CitySearch',
-  props: {
-    cities: {
-      type: Object,
-      default: () => {},
-    },
+const props = defineProps({
+  cities: {
+    type: Object,
+    default: () => {},
   },
-  data() {
-    return {
-      keyword: '',
-      timer: null,
-      results: [],
-      showEmpty: false,
-    };
-  },
-  computed: {},
-  watch: {
-    keyword() {
-      // TODO 使用 lodash 进行优化
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
-      if (!this.keyword) {
-        this.results = [];
-        return;
-      }
-      this.timer = setTimeout(() => {
-        const results = [];
-        Object.keys(this.cities).forEach((key) => {
-          this.cities[key].forEach((city) => {
-            if (city.spell.indexOf(this.keyword) !== -1 || city.name.indexOf(this.keyword) !== -1) {
-              results.push(city);
-            }
-          });
-        });
-        this.showEmpty = results.length === 0;
-        this.results = results;
-      }, 100);
-    },
-  },
-  mounted() {
-    this.initBetterScroll();
-  },
-  created() {},
-  updated() {
-    if (this.scroll && this.results.length) {
-      this.scroll.refresh();
-    }
-  },
-  methods: {
-    initBetterScroll() {
-      this.$nextTick(() => {
-        this.scroll = new BetterScroll(this.$refs['search-content'], {
-          click: true,
-        });
+});
+
+const keyword = ref('');
+const results = ref([]);
+const showEmpty = ref(false);
+const scroll = ref(null);
+const searchContent = ref(null);
+const store = useStore();
+const router = useRouter();
+let timer = null;
+
+onMounted(() => {
+  initBetterScroll();
+});
+
+onUpdated(() => {
+  if (scroll.value && results.value.length) {
+    scroll.value.refresh();
+  }
+});
+
+watch(keyword, (newKeyword) => {
+  // TODO 使用 lodash 进行优化
+  if (timer) {
+    clearTimeout(timer);
+    timer = null;
+  }
+  if (!newKeyword) {
+    results.value = [];
+    return;
+  }
+  timer = setTimeout(() => {
+    const data = [];
+    Object.keys(props.cities).forEach((key) => {
+      props.cities[key].forEach((city) => {
+        if (city.spell.indexOf(newKeyword) !== -1 || city.name.indexOf(newKeyword) !== -1) {
+          data.push(city);
+        }
       });
-    },
-    onChangeCity(city) {
-      this.changeCity({ city });
-      this.keyword = '';
-      this.showEmpty = false;
-      this.$router.push({
-        path: '/',
-      });
-    },
-    ...mapMutations('city', {
-      changeCity: 'change',
-    }),
-  },
+    });
+    showEmpty.value = data.length === 0;
+    results.value = data;
+  }, 100);
+});
+
+const initBetterScroll = () => {
+  nextTick(() => {
+    scroll.value = new BetterScroll(searchContent.value, {
+      click: true,
+    });
+  });
+};
+
+const onChangeCity = (city) => {
+  store.commit('city/change', { city });
+  keyword.value = '';
+  showEmpty.value = false;
+  router.push({
+    path: '/',
+  });
 };
 </script>
 
 <style lang="less" scoped>
 .container {
-  ::v-deep .van-search {
+  :deep(.van-search) {
     padding: 0 10px 10px 10px;
+
+    .van-search__content {
+      background-color: #fff;
+    }
   }
 
-  ::v-deep .van-search__content {
-    background-color: #fff;
-  }
-
-  ::v-deep .van-search input::-webkit-input-placeholder {
+  :deep(.van-search input::-webkit-input-placeholder) {
     color: #666;
   }
 

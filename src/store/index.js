@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
 
 const files = import.meta.glob('./modules/*.js', {
   eager: true,
@@ -11,9 +10,7 @@ Object.keys(files).forEach((key) => {
   modules[moduleName] = files[key].default;
 });
 
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
+const store = createStore({
   // 严格模式
   strict: import.meta.env.MODE !== 'production',
   modules,

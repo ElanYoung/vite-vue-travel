@@ -5,41 +5,33 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import DetailBanner from './components/Banner.vue';
 import DetailHeader from './components/Header.vue';
 import { get } from '@/utils/request';
 
-export default {
-  name: 'Detail',
-  components: {
-    DetailBanner,
-    DetailHeader,
-  },
-  data() {
-    return {
-      sightName: '',
-      bannerImage: '',
-      galleryImages: [],
-    };
-  },
-  mounted() {
-    this.getDetailData();
-  },
-  methods: {
-    getDetailData() {
-      get(`/detail`, {
-        id: this.$route.params.id,
-      }).then((res) => {
-        if (res.code === 200) {
-          const { sight_name, banner_image, gallery_images } = res.data;
-          this.sightName = sight_name;
-          this.bannerImage = banner_image;
-          this.galleryImages = gallery_images;
-        }
-      });
-    },
-  },
+const sightName = ref('');
+const bannerImage = ref('');
+const galleryImages = ref([]);
+
+const route = useRoute();
+
+onMounted(() => {
+  getDetailData();
+});
+
+const getDetailData = async () => {
+  const res = await get(`/detail`, {
+    id: route.params.id,
+  });
+  if (res.code === 200) {
+    const { sight_name, banner_image, gallery_images } = res.data;
+    sightName.value = sight_name;
+    bannerImage.value = banner_image;
+    galleryImages.value = gallery_images;
+  }
 };
 </script>
 

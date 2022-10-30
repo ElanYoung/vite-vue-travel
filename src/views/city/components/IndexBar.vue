@@ -5,7 +5,7 @@
         <div class="city-wrapper__title border-top-bottom">当前城市</div>
         <div class="city-wrapper__city-grid">
           <div class="city-wrapper__city-grid__grid-item-wrapper">
-            <div class="city-wrapper__city-grid__grid-item-wrapper__grid-item">{{ currentCity }}</div>
+            <div class="city-wrapper__city-grid__grid-item-wrapper__grid-item">{{ city.currentCity }}</div>
           </div>
         </div>
       </div>
@@ -14,21 +14,26 @@
         <div class="city-wrapper__city-grid">
           <div class="city-wrapper__city-grid__grid-item-wrapper">
             <div
-              v-for="city in hotCities"
-              :key="city.id"
+              v-for="hotCity in hotCities"
+              :key="hotCity.id"
               class="city-wrapper__city-grid__grid-item-wrapper__grid-item"
-              @click="onChangeCity(city.name)"
+              @click="onChangeCity(hotCity.name)"
             >
-              {{ city.name }}
+              {{ hotCity.name }}
             </div>
           </div>
         </div>
       </div>
-      <div v-for="(city, key) of cities" :key="key" :ref="key" class="city-wrapper">
+      <div
+        v-for="(list, key) of cities"
+        :key="key"
+        :ref="(alphaRef) => (alphaRefs[key] = alphaRef)"
+        class="city-wrapper"
+      >
         <div class="city-wrapper__title border-top-bottom">{{ key }}</div>
         <div class="city-wrapper_city-list">
           <div
-            v-for="item in city"
+            v-for="item in list"
             :key="item.id"
             class="city-wrapper__city-list__list-item border-bottom"
             @click="onChangeCity(item.name)"
@@ -41,65 +46,64 @@
   </div>
 </template>
 
-<script>
-import { mapState, mapMutations } from 'vuex';
+<script setup>
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import BetterScroll from 'better-scroll';
+import { ref, nextTick, watch } from 'vue';
 
-export default {
-  name: 'CityIndexBar',
-  components: {},
-  props: {
-    hotCities: {
-      type: Array,
-      default: () => [],
-    },
-    cities: {
-      type: Object,
-      default: () => {},
-    },
-    alpha: {
-      type: String,
-      default: '',
-    },
+const props = defineProps({
+  hotCities: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return {};
+  cities: {
+    type: Object,
+    default: () => {},
   },
-  computed: {
-    ...mapState({
-      currentCity: (state) => state.city.currentCity,
-    }),
+  alpha: {
+    type: String,
+    default: '',
   },
-  watch: {
-    alpha() {
-      if (this.alpha) {
-        const element = this.$refs[this.alpha];
-        this.scroll.scrollToElement(element[0]);
-      }
-    },
-  },
-  mounted() {},
-  methods: {
-    initBetterScroll() {
-      // this.$nextTick 是一个异步函数，为了确保 DOM 已经渲染完毕
-      this.$nextTick(() => {
-        // TODO BetterScroll封装：https://zhuanlan.zhihu.com/p/27407024
-        this.scroll = new BetterScroll(this.$refs.container, {
-          click: true,
-        });
-      });
-    },
-    onChangeCity(city) {
-      this.changeCity({ city });
-      this.$router.push({
-        path: '/',
-      });
-    },
-    ...mapMutations('city', {
-      changeCity: 'change',
-    }),
-  },
+});
+
+const container = ref(null);
+const scroll = ref(null);
+const alphaRefs = ref([]);
+const store = useStore();
+const router = useRouter();
+const { city } = store.state;
+
+const initBetterScroll = () => {
+  // nextTick 是一个异步函数，为了确保 DOM 已经渲染完毕
+  nextTick(() => {
+    // TODO BetterScroll封装：https://zhuanlan.zhihu.com/p/27407024
+    scroll.value = new BetterScroll(container.value, {
+      click: true,
+    });
+  });
 };
+
+const onChangeCity = (city) => {
+  store.commit('city/change', { city });
+  router.push({
+    path: '/',
+  });
+};
+
+watch(
+  () => props.alpha,
+  (newAlpha) => {
+    if (newAlpha) {
+      const element = alphaRefs.value[newAlpha];
+      scroll.value.scrollToElement(element);
+    }
+  },
+);
+
+defineExpose({
+  initBetterScroll,
+});
 </script>
 
 <style lang="less" scoped>

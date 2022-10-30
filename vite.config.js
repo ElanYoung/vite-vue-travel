@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
-import vue2 from '@vitejs/plugin-vue2';
+import vue from '@vitejs/plugin-vue';
 import px2vp from 'postcss-px2vp';
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
@@ -12,7 +12,7 @@ export default ({ command, mode }) => {
   return defineConfig({
     base: VITE_BASE_URL,
     plugins: [
-      vue2(),
+      vue(),
       Components({
         resolvers: [VantResolver()],
         // 开启语法提示
@@ -41,7 +41,6 @@ export default ({ command, mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
-        // '~@vant': fileURLToPath(new URL('./node_modules/@vant', import.meta.url)),
       },
     },
     css: {

@@ -12,30 +12,26 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DetailHeader',
-  data() {
-    return {
-      showAbsolute: true,
-      opacityStyle: {
-        opacity: 0,
-      },
-    };
-  },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll);
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.onScroll);
-  },
-  methods: {
-    onScroll() {
-      const { scrollTop } = document.documentElement || document.body.scrollTop;
-      this.showAbsolute = !(scrollTop > 60);
-      this.opacityStyle.opacity = scrollTop / 140 > 1 ? 1 : scrollTop / 140;
-    },
-  },
+<script setup>
+import { ref, reactive, onMounted, onUnmounted } from 'vue';
+
+const showAbsolute = ref(true);
+const opacityStyle = reactive({
+  opacity: 0,
+});
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll);
+});
+
+const onScroll = () => {
+  const { scrollTop } = document.documentElement || document.body.scrollTop;
+  showAbsolute.value = !(scrollTop > 60);
+  opacityStyle.opacity = scrollTop / 140 > 1 ? 1 : scrollTop / 140;
 };
 </script>
 

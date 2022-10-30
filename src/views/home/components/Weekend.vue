@@ -15,19 +15,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HomeWeekend',
-  props: {
-    weekends: {
-      type: Array,
-      default: () => [],
-    },
+<script setup>
+defineProps({
+  weekends: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return {};
-  },
-};
+});
 </script>
 
 <style lang="less" scoped>

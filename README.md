@@ -1,29 +1,35 @@
-<h1 align="center"><a href="https://github.com/ElanYoung/vite-vue2-js-template-starter" target="_blank">Vite 3 🚀 - Vue 2  Starter Template</a></h1>
+<h1 align="center"><a href="https://github.com/ElanYoung/vite-vue-travel" target="_blank">Vite 3 🚀 - Vue 3  Qunar App</a></h1>
 
 <p align="center">
-  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
+  <a href="https://nodejs.org/en/about/releases/">
+    <img src="https://img.shields.io/node/v/vite.svg" alt="node compatility" />
+  </a>
   <a href="https://cn.vitejs.dev" rel="nofollow">
-    <img src="https://img.shields.io/badge/vite-3.1.8-3963bc.svg" alt="vite" style="max-width:100%;" />
+    <img src="https://img.shields.io/badge/vite-3.2.1-3963bc.svg" alt="vite" style="max-width:100%;" />
   </a>
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.7.13-brightgreen.svg" alt="vue">
+  <a href="https://github.com/vuejs/core">
+    <img src="https://img.shields.io/badge/vue-3.2.41-brightgreen.svg" alt="vue" />
   </a>
-  <a href="https://github.com/vuejs/vue-router">
-    <img src="https://img.shields.io/badge/vue--router-3.5.4-brightgreen.svg" alt="vue-router">
+  <a href="https://github.com/vuejs/router">
+    <img src="https://img.shields.io/badge/vue--router-4.1.6-brightgreen.svg" alt="vue-router" />
   </a>
   <a href="https://github.com/vuejs/vuex">
-    <img src="https://img.shields.io/badge/vuex-3.6.2-brightgreen.svg" alt="vuex">
+    <img src="https://img.shields.io/badge/vuex-4.1.0-brightgreen.svg" alt="vuex" />
   </a>
-  <a href="https://doc.starimmortal.com"><img alt="author" src="https://img.shields.io/badge/author-ElanYoung-blue.svg"/></a>
-  <a href="https://github.com/ElanYoung/spring-boot-learning-examples/blob/master/LICENSE"><img alt="LICENSE" src="https://img.shields.io/github/license/ElanYoung/spring-boot-learning-examples.svg"/></a>
+  <a href="https://doc.starimmortal.com">
+    <img alt="author" src="https://img.shields.io/badge/author-ElanYoung-blue.svg" />
+  </a>
+  <a href="https://github.com/ElanYoung/vite-vue-travel/blob/master/LICENSE">
+    <img alt="LICENSE" src="https://img.shields.io/github/license/ElanYoung/vite-vue-travel.svg" />
+  </a>
 </p>
 
 <p align='center'>
-  <b>Vite3</b> + <b>Vue2</b> + <b>JavaScript</b> + <b>Vue Router</b> + <b>Vuex</b> + <b>Less</b> + <b>Axios</b> + <b>ESLint + Stylelint + Prettier</b>
+  <b>Vite3</b> + <b>Vue3</b> + <b>JavaScript</b> + <b>Vue Router</b> + <b>Vuex</b> + <b>Less</b> + <b>Axios</b> + <b>ESLint + Stylelint + Prettier</b>
 </p>
 
 <p align='center'>
-  <a href="https://elanyoung.github.io/vite-vue2-js-starter-template">Live Demo</a>
+  <a href="https://elanyoung.github.io/vite-vue-travel/">Live Demo</a>
 </p>
 
 <p align="center">
@@ -33,8 +39,8 @@
 ## Features
 
 + ⚡️ [Vite 3](https://github.com/vitejs/vite) - born with fastness
-+ 🖖 [Vue 2.7](https://github.com/vuejs/vue) - Composition API and `<script setup>`
-+ 🚦 [Vue Router](https://github.com/vuejs/vue-router) - The official router for Vue.js.
++ 🖖 [Vue 3](https://github.com/vuejs/vue) - Composition API and `<script setup>`
++ 🚦 [Vue Router](https://github.com/vuejs/router) - The official router for Vue.js.
 + 📦 [Vuex](https://github.com/vuejs/vuex) - A a state management pattern + library
 + 🎨 [Less](https://github.com/less/less.js) - It's CSS, with just a little more
 + 🔗 [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
@@ -59,40 +65,6 @@
   + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - An opinionated code formatter
   + [StyleLint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
 
-## Try it now!
-
-> Vite3 Vue2 JavaScript Starter Template requires Node >= 14.18
-
-### GitHub Template
-
-[Create a repo from this template on GitHub](https://github.com/ElanYoung/vite-vue2-js-template-starter/generate).
-
-### Clone to local
-
-If you prefer to do it manually with the cleaner git history
-
-```bash
-# clone repository
-git clone https://github.com/ElanYoung/vite-vue2-js-template-starter
-
-# open folder vite-vue2-js-template-starter
-cd vite-vue2-js-template-starter
-
-# install packages
-npm i
-```
-
-## Checklist
-
-When you use this template, try follow the checklist to update your info properly
-
-- [ ] Change the author name in `LICENSE`
-- [ ] Change the title in `App.vue`
-- [ ] Change the hostname in `vite.config.js`
-- [ ] Change the favicon in `public`
-- [ ] Remove the `.github` folder which contains the funding info
-- [ ] Clean up the READMEs and remove routes
-
 ## Usage
 
 ### Development
@@ -113,10 +85,6 @@ npm run dev
 ## build
 npm run build
 ```
-
-## Achievement
-
-🎉 Added to the [Awesome Vite.Js](https://github.com/vitejs/awesome-vite#vue-2)
 
 ## License
 

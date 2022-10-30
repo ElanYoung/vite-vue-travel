@@ -21,8 +21,8 @@ module.exports = defineConfig({
   extends: [
     'airbnb-base',
     'eslint:recommended',
-    'plugin:vue/essential',
-    'plugin:vue/recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
     'plugin:prettier/recommended',
   ],
   rules: {

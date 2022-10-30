@@ -16,43 +16,33 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
 import FadeAnimation from '@/components/fade-animation/index.vue';
 import ImageGallery from '@/components/image-gallery/index.vue';
 
-export default {
-  name: 'DetailBanner',
-  components: {
-    FadeAnimation,
-    ImageGallery,
+defineProps({
+  name: {
+    type: String,
+    default: '',
   },
-  props: {
-    name: {
-      type: String,
-      default: '',
-    },
-    banner: {
-      type: String,
-      default: '',
-    },
-    images: {
-      type: Array,
-      default: () => [],
-    },
+  banner: {
+    type: String,
+    default: '',
   },
-  data() {
-    return {
-      showGallery: false,
-    };
+  images: {
+    type: Array,
+    default: () => [],
   },
-  methods: {
-    onShowGallery() {
-      this.showGallery = true;
-    },
-    onCloseGallery() {
-      this.showGallery = false;
-    },
-  },
+});
+
+const showGallery = ref(false);
+
+const onShowGallery = () => {
+  showGallery.value = true;
+};
+const onCloseGallery = () => {
+  showGallery.value = false;
 };
 </script>
 

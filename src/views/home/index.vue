@@ -1,14 +1,15 @@
 <template>
   <div>
     <home-header></home-header>
-    <home-swiper ref="banner-swiper" :banners="banners"></home-swiper>
-    <home-category-grid ref="grid-swiper" :categories="categories"></home-category-grid>
+    <home-swiper :banners="banners"></home-swiper>
+    <home-category-grid :categories="categories"></home-category-grid>
     <home-recommend :recommends="recommends"></home-recommend>
     <home-weekend :weekends="weekends"></home-weekend>
   </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref } from 'vue';
 import HomeHeader from './components/Header.vue';
 import HomeSwiper from './components/Swiper.vue';
 import HomeCategoryGrid from './components/CategoryGrid.vue';
@@ -16,70 +17,44 @@ import HomeRecommend from './components/Recommend.vue';
 import HomeWeekend from './components/Weekend.vue';
 import { get } from '@/utils/request';
 
-export default {
-  components: {
-    HomeHeader,
-    HomeSwiper,
-    HomeCategoryGrid,
-    HomeRecommend,
-    HomeWeekend,
-  },
-  data() {
-    return {
-      banners: [],
-      categories: [],
-      recommends: [],
-      weekends: [],
-    };
-  },
-  created() {
-    this.initHomeData();
-  },
-  activated() {
-    // 解决 keep-alive 缓存问题
-  },
-  methods: {
-    initHomeData() {
-      this.initSwiperData();
-      this.initGridData();
-      this.initRecommendData();
-      this.initWeekendData();
-    },
-    initSwiperData() {
-      get('/banner/list').then((res) => {
-        if (res.code === 200) {
-          this.banners = res.data;
-          this.$nextTick(() => {
-            this.$refs['banner-swiper'].initSwiper();
-          });
-        }
-      });
-    },
-    initGridData() {
-      get('/category/list').then((res) => {
-        if (res.code === 200) {
-          this.categories = res.data;
-          this.$nextTick(() => {
-            this.$refs['grid-swiper'].initSwiper();
-          });
-        }
-      });
-    },
-    initRecommendData() {
-      get('/recommend/list').then((res) => {
-        if (res.code === 200) {
-          this.recommends = res.data;
-        }
-      });
-    },
-    initWeekendData() {
-      get('/weekend/list').then((res) => {
-        if (res.code === 200) {
-          this.weekends = res.data;
-        }
-      });
-    },
-  },
+const banners = ref([]);
+const categories = ref([]);
+const recommends = ref([]);
+const weekends = ref([]);
+
+onMounted(() => {
+  initSwiperData();
+  initGridData();
+  initRecommendData();
+  initWeekendData();
+});
+
+const initSwiperData = async () => {
+  const res = await get('/banner/list');
+  if (res.code === 200) {
+    banners.value = res.data;
+  }
+};
+
+const initGridData = async () => {
+  const res = await get('/category/list');
+  if (res.code === 200) {
+    categories.value = res.data;
+  }
+};
+
+const initRecommendData = async () => {
+  const res = await get('/recommend/list');
+  if (res.code === 200) {
+    recommends.value = res.data;
+  }
+};
+
+const initWeekendData = async () => {
+  const res = await get('/weekend/list');
+  if (res.code === 200) {
+    weekends.value = res.data;
+  }
 };
 </script>
 

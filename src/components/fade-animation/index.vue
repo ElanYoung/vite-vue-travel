@@ -4,15 +4,7 @@
   </transition>
 </template>
 
-<script>
-export default {
-  name: 'FadeAnimation',
-  data() {
-    return {};
-  },
-  methods: {},
-};
-</script>
+<script setup></script>
 
 <style lang="less" scoped>
 .v-enter,

@@ -1,23 +1,35 @@
-<h1 align="center"><a href="https://github.com/ElanYoung/vite-vue2-js-template-starter" target="_blank">Vite 3 🚀 - Vue 2  Starter Template</a></h1>
+<h1 align="center"><a href="https://github.com/ElanYoung/vite-vue-travel" target="_blank">Vite 3 🚀 - Vue 3 开发去哪儿网App</a></h1>
 
 <p align="center">
-  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
+  <a href="https://nodejs.org/en/about/releases/">
+    <img src="https://img.shields.io/node/v/vite.svg" alt="node compatility" />
+  </a>
   <a href="https://cn.vitejs.dev" rel="nofollow">
-    <img src="https://img.shields.io/badge/vite-3.1.8-3963bc.svg" alt="vue-cli" style="max-width:100%;" />
+    <img src="https://img.shields.io/badge/vite-3.2.1-3963bc.svg" alt="vue-cli" style="max-width:100%;" />
   </a>
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.7.13-brightgreen.svg" alt="vue">
+  <a href="https://github.com/vuejs/core">
+    <img src="https://img.shields.io/badge/vue-3.2.41-brightgreen.svg" alt="vue" />
   </a>
-  <a href="https://doc.starimmortal.com"><img alt="author" src="https://img.shields.io/badge/author-ElanYoung-blue.svg"/></a>
-  <a href="https://github.com/ElanYoung/spring-boot-learning-examples/blob/master/LICENSE"><img alt="LICENSE" src="https://img.shields.io/github/license/ElanYoung/spring-boot-learning-examples.svg"/></a>
+  <a href="https://github.com/vuejs/router">
+    <img src="https://img.shields.io/badge/vue--router-4.1.6-brightgreen.svg" alt="vue-router" />
+  </a>
+  <a href="https://github.com/vuejs/vuex">
+    <img src="https://img.shields.io/badge/vuex-4.1.0-brightgreen.svg" alt="vuex" />
+  </a>
+  <a href="https://doc.starimmortal.com">
+    <img alt="author" src="https://img.shields.io/badge/author-ElanYoung-blue.svg" />
+  </a>
+  <a href="https://github.com/ElanYoung/vite-vue-travel/blob/master/LICENSE">
+    <img alt="LICENSE" src="https://img.shields.io/github/license/ElanYoung/vite-vue-travel.svg" />
+  </a>
 </p>
 
 <p align='center'>
-  <b>Vite3</b> + <b>Vue2</b> + <b>JavaScript</b> + <b>Vue Router</b> + <b>Vuex</b> + <b>Less</b> + <b>Axios</b> + <b>ESLint + Stylelint + Prettier</b>
+  <b>Vite3</b> + <b>Vue3</b> + <b>JavaScript</b> + <b>Vue Router</b> + <b>Vuex</b> + <b>Less</b> + <b>Axios</b> + <b>ESLint + Stylelint + Prettier</b>
 </p>
 
 <p align='center'>
-  <a href="https://elanyoung.github.io/vite-vue2-js-starter-template">在线 Demo</a>
+  <a href="https://elanyoung.github.io/vite-vue-travel/">在线 Demo</a>
 </p>
 
 <p align="center">
@@ -27,9 +39,9 @@
 ## 特性
 
 + ⚡️ [Vite 3](https://cn.vitejs.dev) - 构建工具（就是快！）
-+ 🖖 [Vue 2](https://v2.cn.vuejs.org) - 渐进式 JavaScript 框架
-+ 🚦 [Vue Router](https://v3.router.vuejs.org/zh) - 官方路由管理器
-+ 📦 [Vuex](https://v3.vuex.vuejs.org/zh) - 一个专为 Vue.js 应用程序开发的状态管理模式
++ 🖖 [Vue 3](https://cn.vuejs.org) - 渐进式 JavaScript 框架
++ 🚦 [Vue Router](https://router.vuejs.org/zh) - 官方路由管理器
++ 📦 [Vuex](https://vuex.vuejs.org/zh) - 一个专为 Vue.js 应用程序开发的状态管理模式
 + 🎨 [Less](https://less.bootcss.com/) - CSS 预处理器
 + 🔗 [Axios](https://axios-http.com/zh/) - 一个基于 promise 的网络请求库，可以用于浏览器和 node.js
 + 🧰 [Husky](https://typicode.github.io/husky/#/) + [Lint-Staged](https://github.com/okonet/lint-staged) - Git Hook 工具
@@ -54,40 +66,6 @@
   + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化工具
   + [StyleLint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - CSS 代码规范工具
 
-## 现在可以试试！
-
-> Vite3 Vue2 JavaScript Starter Template 需要 Node 版本 >= 14.18
-
-### GitHub 模板
-
-[使用这个模板创建仓库](https://github.com/ElanYoung/vite-vue2-js-template-starter/generate).
-
-### 克隆到本地
-
-如果您更喜欢使用更干净的 git 历史记录手动执行此操作
-
-```bash
-# 克隆
-git clone https://github.com/ElanYoung/vite-vue2-js-template-starter
-
-# 打开文件夹
-cd vite-vue2-js-template-starter
-
-# 安装依赖
-npm i
-```
-
-## 清单
-
-使用此模板时，请尝试按照清单正确更新您自己的信息
-
-- [ ] 在 `LICENSE` 中改变作者名
-- [ ] 在 `App.vue` 中改变标题
-- [ ] 在 `vite.config.js` 更改主机名
-- [ ] 在 `public` 目录下改变favicon
-- [ ] 移除 `.github` 文件夹中包含资助的信息
-- [ ] 整理 README 并删除路由
-
 ## 使用
 
 ### 开发
@@ -108,10 +86,6 @@ npm run dev
 ## 构建
 npm run build
 ```
-
-## 成就
-
-🎉 被 [Awesome Vite.Js](https://github.com/vitejs/awesome-vite#vue-2) 社区收录啦~
 
 ## 开源协议
 
