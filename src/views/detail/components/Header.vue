@@ -48,9 +48,9 @@ export default {
     width: 60px;
     height: 60px;
     line-height: 60px;
-    border-radius: 40px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(0 0 0 / 80%);
+    border-radius: 40px;
 
     &__back-icon {
       color: #fff;
@@ -63,10 +63,10 @@ export default {
     right: 0;
     left: 0;
     height: @header-height;
-    text-align: center;
-    color: #fff;
-    background: @background-color;
     line-height: @header-height;
+    color: #fff;
+    text-align: center;
+    background: @background-color;
 
     &__back-icon {
       position: absolute;
@@ -75,8 +75,8 @@ export default {
       z-index: 2;
       width: 64px;
       font-size: 40px;
-      text-align: center;
       color: #fff;
+      text-align: center;
     }
   }
 }

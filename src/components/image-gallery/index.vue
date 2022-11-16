@@ -71,14 +71,14 @@ export default {
   left: 0;
   z-index: 99;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: #000;
-  flex-direction: column;
 
   .image-gallery-wrapper {
-    padding-bottom: 100%;
     width: 100%;
     height: 0;
+    padding-bottom: 100%;
 
     .swiper-container {
       .swiper-image {

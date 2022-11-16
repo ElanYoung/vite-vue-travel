@@ -36,13 +36,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '@/style/mixins.less';
+@import url('@/style/mixins.less');
 
 .container {
   .recommend-title {
     margin-top: 10px;
-    text-indent: 20px;
     line-height: 80px;
+    text-indent: 20px;
     background-color: #eee;
   }
 
@@ -50,17 +50,17 @@ export default {
     display: flex;
 
     &__image {
-      padding: 10px;
       width: 170px;
       height: 170px;
+      padding: 10px;
     }
 
     &__info {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      padding: 0 14px;
       min-width: 0;
+      padding: 0 14px;
 
       &__title {
         font-size: 28px;

@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '@/style/mixins.less';
+@import url('@/style/mixins.less');
 
 .container {
   margin-top: 10px;

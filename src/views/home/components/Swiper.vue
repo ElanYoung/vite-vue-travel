@@ -57,11 +57,11 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  overflow: hidden;
-  padding-bottom: 31.25%;
   width: 100%;
   height: 0;
-  background-color: #eeeeee;
+  padding-bottom: 31.25%;
+  overflow: hidden;
+  background-color: #eee;
 
   .swiper-container {
     /* 设置分页 */

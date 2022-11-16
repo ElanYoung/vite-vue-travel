@@ -39,7 +39,7 @@ export default {
     },
   },
   updated() {
-    // 提示性能
+    // 提升性能
     this.startY = this.$refs.A[0].offsetTop;
   },
   methods: {
@@ -79,15 +79,15 @@ export default {
     right: 0;
     bottom: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
 
     &__item {
-      text-align: center;
-      color: @background-color;
       line-height: 40px;
+      color: @background-color;
+      text-align: center;
     }
   }
 }
