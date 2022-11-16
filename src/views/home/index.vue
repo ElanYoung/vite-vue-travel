@@ -47,7 +47,7 @@ export default {
     },
     initSwiperData() {
       get('/banner/list').then((res) => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           this.banners = res.data;
           this.$nextTick(() => {
             this.$refs['banner-swiper'].initSwiper();
@@ -57,7 +57,7 @@ export default {
     },
     initGridData() {
       get('/category/list').then((res) => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           this.categories = res.data;
           this.$nextTick(() => {
             this.$refs['grid-swiper'].initSwiper();
@@ -67,14 +67,14 @@ export default {
     },
     initRecommendData() {
       get('/recommend/list').then((res) => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           this.recommends = res.data;
         }
       });
     },
     initWeekendData() {
       get('/weekend/list').then((res) => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           this.weekends = res.data;
         }
       });

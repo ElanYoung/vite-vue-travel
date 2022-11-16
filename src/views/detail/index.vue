@@ -31,7 +31,7 @@ export default {
       get(`/detail`, {
         id: this.$route.params.id,
       }).then((res) => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           const { sight_name, banner_image, gallery_images } = res.data;
           this.sightName = sight_name;
           this.bannerImage = banner_image;

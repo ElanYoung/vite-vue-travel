@@ -35,7 +35,7 @@ instance.interceptors.response.use(
      */
     if (response.status === 200) {
       const { data } = response;
-      if (data.code === 200) {
+      if (data.code === 0) {
         return data;
       }
       return response;

@@ -4,7 +4,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: {
           sight_name: '大连圣亚海洋世界(AAAA景区)',
           banner_image:

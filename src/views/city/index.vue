@@ -34,7 +34,7 @@ export default {
   methods: {
     async initCityData() {
       const res = await get('/city/list');
-      if (res.code === 200) {
+      if (res.code === 0) {
         this.hotCities = res.data.hot_cities;
         this.cities = res.data.cities;
         if (this.$refs['index-bar'].scroll) return;
