@@ -5,10 +5,10 @@
     <img src="https://img.shields.io/node/v/vite.svg" alt="node compatility" />
   </a>
   <a href="https://cn.vitejs.dev" rel="nofollow">
-    <img src="https://img.shields.io/badge/vite-3.2.1-3963bc.svg" alt="vue-cli" style="max-width:100%;" />
+    <img src="https://img.shields.io/badge/vite-3.2.4-3963bc.svg" alt="vue-cli" style="max-width:100%;" />
   </a>
   <a href="https://github.com/vuejs/core">
-    <img src="https://img.shields.io/badge/vue-3.2.41-brightgreen.svg" alt="vue" />
+    <img src="https://img.shields.io/badge/vue-3.2.45-brightgreen.svg" alt="vue" />
   </a>
   <a href="https://github.com/vuejs/router">
     <img src="https://img.shields.io/badge/vue--router-4.1.6-brightgreen.svg" alt="vue-router" />
