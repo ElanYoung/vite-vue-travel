@@ -26,7 +26,7 @@ const getDetailData = async () => {
   const res = await get(`/detail`, {
     id: route.params.id,
   });
-  if (res.code === 200) {
+  if (res.code === 0) {
     const { sight_name, banner_image, gallery_images } = res.data;
     sightName.value = sight_name;
     bannerImage.value = banner_image;

@@ -4,7 +4,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: {
           hot_cities: [
             {

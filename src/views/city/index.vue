@@ -26,7 +26,7 @@ onMounted(() => {
 
 const initCityData = async () => {
   const res = await get('/city/list');
-  if (res.code === 200) {
+  if (res.code === 0) {
     hotCities.value = res.data.hot_cities;
     cities.value = res.data.cities;
     if (indexBar.value.scroll) return;

@@ -31,28 +31,28 @@ onMounted(() => {
 
 const initSwiperData = async () => {
   const res = await get('/banner/list');
-  if (res.code === 200) {
+  if (res.code === 0) {
     banners.value = res.data;
   }
 };
 
 const initGridData = async () => {
   const res = await get('/category/list');
-  if (res.code === 200) {
+  if (res.code === 0) {
     categories.value = res.data;
   }
 };
 
 const initRecommendData = async () => {
   const res = await get('/recommend/list');
-  if (res.code === 200) {
+  if (res.code === 0) {
     recommends.value = res.data;
   }
 };
 
 const initWeekendData = async () => {
   const res = await get('/weekend/list');
-  if (res.code === 200) {
+  if (res.code === 0) {
     weekends.value = res.data;
   }
 };

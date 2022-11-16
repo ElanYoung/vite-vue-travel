@@ -6,7 +6,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: [
           {
             id: '0001',
@@ -33,7 +34,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: [
           {
             id: '0001',
@@ -89,7 +91,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: [
           {
             id: '0001',
@@ -130,7 +133,8 @@ export default [
     method: 'get',
     response: () => {
       return {
-        code: 200,
+        code: 0,
+        message: 'OK',
         data: [
           {
             id: '0001',
