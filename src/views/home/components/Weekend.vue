@@ -25,20 +25,20 @@ defineProps({
 </script>
 
 <style lang="less" scoped>
-@import '@/style/mixins.less';
+@import url('@/style/mixins.less');
 
 .container {
   .weekend-title {
-    text-indent: 20px;
     line-height: 80px;
+    text-indent: 20px;
     background-color: #eee;
   }
 
   .weekend-item {
     &__image-wrapper {
-      overflow: hidden;
-      padding-bottom: 37.09%;
       height: 0;
+      padding-bottom: 37.09%;
+      overflow: hidden;
 
       &__image {
         width: 100%;
@@ -51,15 +51,15 @@ defineProps({
       padding: 4px 10px;
 
       &__title {
-        line-height: 60px;
         font-size: 30px;
+        line-height: 60px;
         .ellipsis();
       }
 
       &__description {
         font-size: 24px;
-        color: #ccc;
         line-height: 50px;
+        color: #ccc;
         .ellipsis();
       }
     }

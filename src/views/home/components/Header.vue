@@ -39,12 +39,12 @@ const initCurrentCity = async () => {
 <style lang="less" scoped>
 .header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   height: @header-height;
-  color: #ffffff;
-  background: @background-color;
-  flex-direction: row;
   line-height: @header-height;
+  color: #fff;
+  background: @background-color;
 
   &__left {
     width: 68px;
@@ -56,13 +56,13 @@ const initCurrentCity = async () => {
   }
 
   &__input {
-    padding-left: 20px;
-    height: 64px;
-    line-height: 64px;
-    border-radius: 10px;
-    color: #cccccc;
-    background: #ffffff;
     flex: 1;
+    height: 64px;
+    padding-left: 20px;
+    line-height: 64px;
+    color: #ccc;
+    background: #fff;
+    border-radius: 10px;
 
     &__placeholder {
       margin-left: 20px;
@@ -72,13 +72,13 @@ const initCurrentCity = async () => {
 
   &__right {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    min-width: 120px;
-    text-align: center;
-    color: #fff;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 0 10px;
+    color: #fff;
+    text-align: center;
 
     &__arrow-icon {
       margin-left: 4px;

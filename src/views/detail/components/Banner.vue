@@ -50,9 +50,9 @@ const onCloseGallery = () => {
 .container {
   .banner-wrapper {
     position: relative;
-    overflow: hidden;
-    padding-bottom: 55%;
     height: 0;
+    padding-bottom: 55%;
+    overflow: hidden;
 
     &__image {
       width: 100%;
@@ -64,12 +64,12 @@ const onCloseGallery = () => {
       bottom: 0;
       left: 0;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 0 10px;
-      color: #fff;
       line-height: 30px;
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+      color: #fff;
+      background-image: linear-gradient(to top, rgb(0 0 0 / 0%), rgb(0 0 0 / 80%));
 
       &__title {
         font-size: 14px;
@@ -78,11 +78,11 @@ const onCloseGallery = () => {
       &__number-wrapper {
         display: flex;
         align-items: center;
-        padding: 0 10px;
         height: 20px;
-        border-radius: 10px;
-        background: rgba(0, 0, 0, 0.8);
+        padding: 0 10px;
         line-height: 20px;
+        background: rgb(0 0 0 / 80%);
+        border-radius: 10px;
 
         &__number {
           margin-left: 4px;

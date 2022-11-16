@@ -108,22 +108,25 @@ defineExpose({
 
 <style lang="less" scoped>
 .border-top-bottom {
-  &:before {
+  &::before {
     border-color: #ccc;
   }
-  &:after {
+
+  &::after {
     border-color: #ccc;
   }
 }
 
 .border-bottom {
-  &:before {
+  &::before {
     border-color: #ccc;
   }
-  &:after {
+
+  &::after {
     border-color: #ccc;
   }
 }
+
 .container {
   position: absolute;
   top: 164px;
@@ -135,35 +138,35 @@ defineExpose({
   .city-wrapper {
     &__title {
       font-size: 14px;
-      text-indent: 10px;
-      color: #666;
-      background-color: #eee;
       line-height: 30px;
+      color: #666;
+      text-indent: 10px;
+      background-color: #eee;
     }
 
     &__city-grid {
       &__grid-item-wrapper {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-        padding: 0 22px 0 12px;
-        width: 100%;
         box-sizing: border-box;
+        display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 22px 0 12px;
+        margin-top: 10px;
 
         &__grid-item {
-          margin-bottom: 10px;
-          padding: 6px 0;
           width: 30%;
+          padding: 6px 0;
+          margin-bottom: 10px;
           font-size: 14px;
+          text-align: center;
           border: 1px solid #ccc;
           border-radius: 6px;
-          text-align: center;
         }
       }
 
       /* 解决左对齐问题 */
-      &:after {
+      &::after {
         width: 30%;
         content: '';
       }
@@ -172,8 +175,8 @@ defineExpose({
     &__city-list {
       &__list-item {
         font-size: 14px;
-        text-indent: 10px;
         line-height: 40px;
+        text-indent: 10px;
       }
     }
   }

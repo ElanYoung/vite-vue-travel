@@ -108,7 +108,7 @@ const onChangeCity = (city) => {
 <style lang="less" scoped>
 .container {
   :deep(.van-search) {
-    padding: 0 10px 10px 10px;
+    padding: 0 10px 10px;
 
     .van-search__content {
       background-color: #fff;
@@ -120,21 +120,21 @@ const onChangeCity = (city) => {
   }
 
   .search {
-    padding: 0 10px;
     height: 72px;
+    padding: 0 10px;
     background-color: @background-color;
 
     &__input {
-      padding: 0 10px;
+      box-sizing: border-box;
       width: 100%;
       height: 62px;
+      padding: 0 10px;
       font-size: 30px;
+      line-height: 62px;
+      color: #666;
+      text-align: center;
       border: 1px solid #fff;
       border-radius: 6px;
-      text-align: center;
-      color: #666;
-      box-sizing: border-box;
-      line-height: 62px;
     }
   }
 
@@ -149,11 +149,11 @@ const onChangeCity = (city) => {
     background-color: #eee;
 
     &__content-item {
+      line-height: 60px;
+      color: #666;
       // padding: 10px 20px;
       text-indent: 10px;
-      color: #666;
       background-color: #fff;
-      line-height: 60px;
     }
   }
 

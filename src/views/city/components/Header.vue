@@ -14,12 +14,12 @@
 <style lang="less" scoped>
 .header {
   position: relative;
-  overflow: hidden;
   height: @header-height;
-  text-align: center;
-  color: #fff;
-  background: @background-color;
+  overflow: hidden;
   line-height: @header-height;
+  color: #fff;
+  text-align: center;
+  background: @background-color;
 
   &__back-icon {
     position: absolute;
@@ -27,8 +27,8 @@
     left: 0;
     width: 64px;
     font-size: 40px;
-    text-align: center;
     color: #fff;
+    text-align: center;
   }
 }
 </style>
