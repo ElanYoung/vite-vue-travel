@@ -4,7 +4,7 @@
       <router-link to="/">
         <div class="iconfont iconback header__back-icon"></div>
       </router-link>
-      <span>城市选择</span>
+      <span class="header__title">城市选择</span>
     </div>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default {
   color: #fff;
   text-align: center;
   background: @background-color;
+
+  &__title {
+    font-size: 32px;
+  }
 
   &__back-icon {
     position: absolute;
