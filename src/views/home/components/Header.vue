@@ -9,7 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="header__right">
-        <span>{{ city.currentCity }}</span>
+        <span class="header__right__city">{{ city.currentCity }}</span>
         <span class="iconfont icontriangledownfill header__right__arrow-icon"></span>
       </div>
     </router-link>
@@ -79,6 +79,10 @@ const initCurrentCity = async () => {
     padding: 0 10px;
     color: #fff;
     text-align: center;
+
+    &__city {
+      font-size: 32px;
+    }
 
     &__arrow-icon {
       margin-left: 4px;

@@ -37,6 +37,7 @@ defineProps({
 .container {
   .recommend-title {
     margin-top: 10px;
+    font-size: 32px;
     line-height: 80px;
     text-indent: 20px;
     background-color: #eee;
@@ -71,6 +72,9 @@ defineProps({
 
       &__button {
         align-self: baseline;
+        width: 120px;
+        height: 48px;
+        font-size: 24px;
       }
     }
   }

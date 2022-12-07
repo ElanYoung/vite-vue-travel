@@ -4,7 +4,7 @@
     <ul>
       <li v-for="weekend of weekends" :key="weekend.id" class="weekend-item border-bottom">
         <div class="weekend-item__image-wrapper">
-          <img class="weekend-item__image" :src="weekend.url" />
+          <img class="weekend-item__image-wrapper__image" :src="weekend.url" />
         </div>
         <div class="weekend-item__info">
           <p class="weekend-item__info__title">{{ weekend.title }}</p>
@@ -29,6 +29,7 @@ defineProps({
 
 .container {
   .weekend-title {
+    font-size: 32px;
     line-height: 80px;
     text-indent: 20px;
     background-color: #eee;
